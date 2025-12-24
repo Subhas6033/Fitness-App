@@ -2,7 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { Home, NotFound, Login } from "./Pages/index.js";
 import { Provider } from "react-redux";
 import store from "./Store/Store.js";
@@ -17,12 +21,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/notfound",
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/404", // explicit 404 route
         element: <NotFound />,
       },
       {
-        path: "/login",
-        element: <Login />,
+        path: "*",
+        element: <Navigate to="/404" replace />,
       },
     ],
   },

@@ -76,7 +76,7 @@ export default function Hero() {
 
         {/* Right */}
         <div className="relative">
-          <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-white/20 to-transparent blur-2xl" />
+          <div className="absolute -inset-6 rounded-3xl bg-linear-to-tr from-white/20 to-transparent blur-2xl" />
           <img
             src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Fitness"

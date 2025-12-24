@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Sun, Moon, Zap, Droplet } from "lucide-react";
+import { Sun, Moon, Zap, Droplet, Menu, X } from "lucide-react";
 import { Button } from "../index";
 import useBackgroundSlice from "../../Hooks/BgHook";
 
 export default function Navbar() {
   const { currentThemeKey, changeBackground, colors } = useBackgroundSlice();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   // Map theme keys to icons
   const themeIcons = {
@@ -40,32 +41,18 @@ export default function Navbar() {
           FitBody
         </Link>
 
-        {/* Nav Links */}
+        {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 font-medium">
-          <li>
-            <Link
-              to="/"
-              className={`${colors.linkColor} transition-colors duration-300`}
-            >
-              Features
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className={`${colors.linkColor} transition-colors duration-300`}
-            >
-              Benefits
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className={`${colors.linkColor} transition-colors duration-300`}
-            >
-              Testimonials
-            </Link>
-          </li>
+          {["Features", "Benefits", "Testimonials"].map((link) => (
+            <li key={link}>
+              <Link
+                to="/"
+                className={`${colors.linkColor} transition-colors duration-300`}
+              >
+                {link}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* Actions */}
@@ -86,12 +73,52 @@ export default function Navbar() {
           {/* Get Started */}
           <Link
             to="/login"
-            className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition"
+            className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition hidden md:block"
           >
             Get Started
           </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-md border border-gray-300 dark:border-white/20"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className={`md:hidden px-6 pb-4 ${colors.navbarBg}`}>
+          <ul className="flex flex-col gap-4 font-medium">
+            {["Features", "Benefits", "Testimonials"].map((link) => (
+              <li key={link}>
+                <Link
+                  to="/"
+                  className={`${colors.linkColor} transition-colors duration-300`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/login"
+                className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition"
+                onClick={() => setMobileOpen(false)}
+              >
+                Get Started
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

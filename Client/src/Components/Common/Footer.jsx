@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`${isDark ? "bg-black" : "bg-gray-100"} ${
+      className={`${isDark ? "bg-black" : "bg-slate-200"} ${
         colors.textLightColor
       }mt-2 transition-colors duration-500`}
     >

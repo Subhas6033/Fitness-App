@@ -1,54 +1,32 @@
-import { Link } from "react-router-dom";
-import { Card, Button } from "../Components/index";
-import useBackgroundSlice from "../Hooks/BgHook";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../Components/index";
 
-export default function NotFound() {
-  const { currentBackground, changeBackground } = useBackgroundSlice();
+const NotFound = () => {
+  const navigate = useNavigate();
 
   return (
-    <section
-      className={`${currentBackground} relative min-h-screen flex items-center justify-center px-6 transition-colors duration-500`}
-    >
-      {/* Optional subtle glow for depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_70%)] pointer-events-none" />
+    <main className="flex flex-col items-center justify-center min-h-screen bg-white px-6 text-center">
+      {/* 404 Number */}
+      <h1 className="text-6xl md:text-8xl font-extrabold mb-6">404</h1>
 
-      <Card className="relative z-10 max-w-lg w-full text-center bg-white/5 backdrop-blur-md border-white/10 text-white p-12 space-y-6 rounded-3xl">
-        {/* Icon */}
-        <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-600/25 text-red-400 text-4xl animate-bounce">
-          ⚠️
-        </div>
+      {/* Heading */}
+      <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+        Welcome to the stone age
+      </h2>
 
-        {/* Heading */}
-        <h1 className="text-7xl font-extrabold tracking-tight text-white">
-          404
-        </h1>
-        <h2 className="mt-2 text-2xl font-semibold">Page Not Found</h2>
+      {/* Description */}
+      <p className="text-gray-600 mb-6">
+        You have reached the far end of the internet!
+      </p>
 
-        {/* Description */}
-        <p className="mt-2 text-white/70 text-base sm:text-lg">
-          The page you’re looking for doesn’t exist or may have been moved.
-          Don’t worry — your fitness journey is still on track.
-        </p>
+      {/* Go Home Button */}
+      <Button onClick={() => navigate("/")}>Go to Home</Button>
 
-        {/* Actions */}
-        <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/">
-            <Button size="lg" className="shadow-lg">
-              Go Home
-            </Button>
-          </Link>
-
-          <Link to="/login">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-red-600 shadow-lg"
-            >
-              Get Started
-            </Button>
-          </Link>
-        </div>
-      </Card>
-    </section>
+      {/* Optional Refresh */}
+      <p className="text-gray-500 mt-4">Or refresh the page once</p>
+    </main>
   );
-}
+};
+
+export default NotFound;
