@@ -1,5 +1,5 @@
 import Home from "./Home";
+import RegisterUserData from "./Register";
 import NotFound from "./NotFound";
-import Login from "./Login";
 
-export { Home, NotFound, Login };
+export { Home, RegisterUserData, NotFound };

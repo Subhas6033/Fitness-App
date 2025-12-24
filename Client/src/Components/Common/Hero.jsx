@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Card, Button, Modal } from "../index";
 import useBackgroundSlice from "../../Hooks/BgHook";
+import { useNavigate } from "react-router-dom";
+import { MoveRight } from "lucide-react";
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
   const { currentBackground, colors, isDark } = useBackgroundSlice();
+  const navigate = useNavigate();
 
   return (
     <section
@@ -38,8 +41,12 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 mt-10">
-            <Button size="lg" className={`shadow-xl ${colors.btnPrimary}`}>
-              Start Free Trial →
+            <Button
+              size="lg"
+              className={`shadow-xl ${colors.btnPrimary}`}
+              onClick={() => navigate("/details")}
+            >
+              Start Free Trial <MoveRight className="ml-2" />
             </Button>
 
             <Button

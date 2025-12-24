@@ -4,7 +4,7 @@ import Footer from "./Common/Footer";
 import Modal from "./Common/Modal";
 import Button from "./Common/Button";
 import Card from "./Common/Card";
-import Input from "./Common/Input";
+import { Input, Select } from "./Common/Input";
 import { FeatureCard } from "./Common/FeatureCard";
 import FeaturesSection from "./Featured/FeaturedSection";
 import StatsSection from "./Stats/StatsSection";
@@ -18,6 +18,7 @@ export {
   Button,
   Card,
   Input,
+  Select,
   FeatureCard,
   FeaturesSection,
   StatsSection,

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Define available background themes
 const initialState = {
-  current: "dark",
+  current: "light",
   themes: {
     light: "bg-white",
     dark: "bg-gray-900",

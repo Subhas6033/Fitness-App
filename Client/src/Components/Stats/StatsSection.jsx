@@ -13,7 +13,9 @@ export default function StatsSection() {
   return (
     <section
       className={`${
-        isDark ? "text-white" : "text-slate-950 bg-slate-100"
+        isDark
+          ? "text-white"
+          : "text-slate-50 bg-linear-to-r from-red-500 to-red-600"
       } py-16`}
     >
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-around items-center gap-8">

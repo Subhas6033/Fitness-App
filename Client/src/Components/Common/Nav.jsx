@@ -26,6 +26,13 @@ export default function Navbar() {
     changeBackground(themes[nextIndex]);
   };
 
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 backdrop-blur-md shadow-sm transition-colors duration-500 ${colors.navbarBg}`}
@@ -43,14 +50,17 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 font-medium">
-          {["Features", "Benefits", "Testimonials"].map((link) => (
-            <li key={link}>
-              <Link
-                to="/"
-                className={`${colors.linkColor} transition-colors duration-300`}
+          {[
+            { label: "Features", id: "features" },
+            { label: "Testimonials", id: "testimonials" },
+          ].map(({ label, id }) => (
+            <li key={id}>
+              <button
+                onClick={() => handleScroll(id)}
+                className={`${colors.linkColor} transition-colors duration-300 hover:cursor-pointer`}
               >
-                {link}
-              </Link>
+                {label}
+              </button>
             </li>
           ))}
         </ul>
@@ -72,7 +82,7 @@ export default function Navbar() {
 
           {/* Get Started */}
           <Link
-            to="/login"
+            to="/details"
             className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition hidden md:block"
           >
             Get Started
@@ -95,21 +105,27 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className={`md:hidden px-6 pb-4 ${colors.navbarBg}`}>
-          <ul className="flex flex-col gap-4 font-medium">
-            {["Features", "Benefits", "Testimonials"].map((link) => (
-              <li key={link}>
-                <Link
-                  to="/"
-                  className={`${colors.linkColor} transition-colors duration-300`}
-                  onClick={() => setMobileOpen(false)}
+          <ul className="flex flex-col items-center justify-center gap-4 font-medium">
+            {[
+              { label: "Features", id: "features" },
+              { label: "Testimonials", id: "testimonials" },
+            ].map(({ label, id }) => (
+              <li key={id}>
+                <button
+                  onClick={() => {
+                    handleScroll(id);
+                    setMobileOpen(false);
+                  }}
+                  className={`${colors.linkColor} transition-colors duration-300 hover:cursor-pointer text-center`}
                 >
-                  {link}
-                </Link>
+                  {label}
+                </button>
               </li>
             ))}
+
             <li>
               <Link
-                to="/login"
+                to="/details"
                 className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition"
                 onClick={() => setMobileOpen(false)}
               >

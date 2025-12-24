@@ -53,7 +53,7 @@ export default function FeaturesSection() {
   const { colors } = useBackgroundSlice();
 
   return (
-    <section className="relative py-24 max-w-7xl mx-auto px-6">
+    <section className="relative py-24 max-w-7xl mx-auto px-6" id="features">
       <div className="text-center mb-16">
         <h2
           className={`text-4xl lg:text-5xl font-extrabold mb-4 ${colors.textColor}`}

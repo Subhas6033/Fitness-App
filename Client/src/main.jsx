@@ -7,7 +7,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import { Home, NotFound, Login } from "./Pages/index.js";
+import { Home, NotFound, RegisterUserData } from "./Pages/index.js";
 import { Provider } from "react-redux";
 import store from "./Store/Store.js";
 
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <Login />,
+        path: "/details",
+        element: <RegisterUserData />,
       },
       {
         path: "/404", // explicit 404 route
